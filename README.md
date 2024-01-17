@@ -19,14 +19,14 @@ Consider that the cyclist has to visit all the tourist destinations in a consecu
 ### 3. Mathematical Formulation
 
 - Sets:
-    - $L = \{1,\ldots,n\}$:  locations along the main course from which we can deviate
-    - $H = \{1',\ldots, n'\}$:  tourist sites that may host a charging station.
+    - $H = \{1,\ldots, n\}$:  tourist sites that may host a charging station.
+    - $N = \{0,\ldots,n+1\}$:  Nodes in the graph consist of tourist sites, along with the source and sink.
+    - $A = \{(i, j) \mid i, j \in H}\$: set of arcs representing the distance between two candidate sites
 
 - Parameters:
-    - $d_{i,i+1}, i=1,\ldots,n$: distances between consecutive nodes,
-    - $d_{i,i'}, i=1,\ldots,n$: length of the deviations
-    - $c_i$: cost of installing a charging station in site $i', i=1\ldots n$
-    - $b$:given budget. 
+    - $d_{i,j}, i,j=1,\ldots,n$: distances between consecutive nodes,
+    - $c_i$: cost of installing a charging station in site $i, i=1\ldots n$
+    - $b$: given budget.
 
 - Useful information:
     - $s = 0$: starting point

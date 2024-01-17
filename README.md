@@ -26,12 +26,27 @@ Consider that the cyclist has to visit all the tourist destinations in a consecu
 - Parameters:
     - $d_{i,j}, i,j=1,\ldots,n$: distances between consecutive nodes,
     - $c_i$: cost of installing a charging station in site $i, i=1\ldots n$
-    - $b$: given budget.
+    - $B$: given budget.
 
 - Useful information:
     - $s = 0$: starting point
     - $t = n+1$: ending point
 
+- Variables:
+    - $x_i$: Binary variable, equal to 1 if a charging station is installed at node $\(i\)$, and 0 otherwise, $\(i \in H\)$.
+    - $y_{ij}$: Binary variable, equal to 1 if the arc from node $\(i\)$ to node $\(j\)$ is selected, and 0 otherwise, $\(i, j \in H\)$.
+ 
+- Constraints:
+    - Budget Constraint: $\sum_{i \in H} c_i \cdot x_i \leq B$
+    - Flow Conservation Constraints: <br>
+  $\sum_{j \in N} y_{0,j} = 1$ <br>
+  $\sum_{i \in N} y_{i,n+1} = -1$ <br>
+  $\sum_{j \in N} y_{ij} - \sum_{j \in N} y_{ji} = 0 \quad \text{for all } i \in H$ <br>
+
+- Objective functions:
+    - Minimize Cost: $Minimize \( \sum_{i \in H} c_i \cdot x_i \)$
+    - Minimize Maximum Distance: $Minimize \( \max_{i, j \in H} d_{ij} \cdot y_{ij} \)$
+  
 ### 4. Files Description
 
 - **nodes.csv**:

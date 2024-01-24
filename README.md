@@ -44,7 +44,6 @@ Consider that the cyclist has to visit all the tourist destinations in a consecu
   $\sum_{j \in N} y_{ij} - \sum_{j \in N} y_{ji} = 0 \quad \text{for all } i \in H$ <br>
 
 - Objective functions:
-    - Minimize Cost: $Minimize \( \sum_{i \in H} c_i \cdot x_i \)$
     - Minimize Maximum Distance: $Minimize \( \max_{i, j \in H} d_{ij} \cdot y_{ij} \)$
   
 ### 4. Files Description

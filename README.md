@@ -38,14 +38,14 @@ Consider that the cyclist has to visit all the tourist destinations in a consecu
  
 - Constraints:
     - Budget Constraint: $\sum_{i \in H} c_i \cdot x_i \leq B$
-    - Distance Constraint: $\sum_{i \in H} \sum_{j \in H} d_{ij} \cdot y_{ij} \leq 50$
+    - Distance Constraint: $\sum_{i \in H} \sum_{j \in H} d_{ij} \cdot y_{ij} \leq 50km$
     - Flow Conservation Constraints: <br>
   $\sum_{j \in N} y_{0,j} = 1$ <br>
   $\sum_{i \in N} y_{i,n+1} = -1$ <br>
   $\sum_{j \in N} y_{ij} - \sum_{j \in N} y_{ji} = 0 \quad \text{for all } i \in H$ <br>
   
 - Objective functions:
-    - Minimize Maximum Distance: $Minimize \( \max_{i, j \in H} d_{ij} \cdot y_{ij} \)$
+    - Minimize Maximum Distance Between 2 consecutive charging stations: $Minimize \( \max_{i, j \in H} d_{ij} \cdot x_{ij} \)$
   
 ### 4. Files Description
 

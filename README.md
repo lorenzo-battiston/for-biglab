@@ -45,7 +45,7 @@ Consider that the cyclist has to visit all the tourist destinations in a consecu
   $\sum_{j \in N} y_{ij} - \sum_{j \in N} y_{ji} = 0 \quad \text{for all } i \in H$ <br>
   
 - Objective functions:
-    - Minimize Maximum Distance Between 2 consecutive charging stations: $Minimize \( \max_{i, j \in H} d_{ij} \cdot x_{ij} \)$
+    - Minimize Maximum Distance Between 2 consecutive charging stations: $Minimize \( \max_{i, j \in H} d_{ij} \cdot x_{i} \)$
   
 ### 4. Files Description
 

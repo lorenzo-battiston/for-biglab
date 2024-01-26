@@ -34,18 +34,16 @@ Consider that the cyclist has to visit all the tourist destinations in a consecu
 
 - Variables:
     - $x_i$: Binary variable, equal to 1 if a charging station is installed at node $\(i\)$, and 0 otherwise, $\(i \in H\)$.
-    - $y_{ij}$: Binary variable, equal to 1 if the arc from node $\(i\)$ to node $\(j\)$ is selected, and 0 otherwise, $\(i, j \in H\)$.
+    - $y_{ij}$: Binary variable, equal to 1 if there is a charging station between sites $i$ and $j$, and 0 otherwise, $\(i, j \in H\)$.
  
 - Constraints:
     - Budget Constraint: $\sum_{i \in H} c_i \cdot x_i \leq B$
-    - Distance Constraint: $\sum_{i \in H} \sum_{j \in H} d_{ij} \cdot y_{ij} \leq 50km$
+    - Distance Constraint: $d_{ij} \cdot y_{ij} \leq 50 km$ for $\( i, j \in H, i \neq j\)$
+    - Linking Constraint: $y_{ij} \leq x_i + x_j - 1$, for all $\( i, j \in H \), i \ne j$
     - Flow Conservation Constraints: <br>
-  $\sum_{j \in N} y_{0,j} = 1$ <br>
-  $\sum_{i \in N} y_{i,n+1} = -1$ <br>
-  $\sum_{j \in N} y_{ij} - \sum_{j \in N} y_{ji} = 0 \quad \text{for all } i \in H$ <br>
-  
+    
 - Objective functions:
-    - Minimize Maximum Distance Between 2 consecutive charging stations: $Minimize \( \max_{i, j \in H} d_{ij} \cdot x_{i} \)$
+    - Minimize Maximum Distance Between 2 consecutive charging stations: $Minimize \(\max_{i,j} d_{ij} \cdot y_{ij}\)$
   
 ### 4. Files Description
 

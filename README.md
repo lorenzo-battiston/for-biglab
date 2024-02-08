@@ -21,23 +21,24 @@ Consider that the cyclist has to visit all the tourist destinations in a consecu
 - Sets:
     - $H = \{1,\ldots, n\}$:  tourist sites that may host a charging station.
     - $N = \{0,\ldots,n+1\}$:  Nodes in the graph consist of tourist sites, along with the source and sink.
-    - $A = \{(i, j) \mid i, j \in H}\$: set of arcs representing the distance between two candidate sites
+    - $A = \{(i, j) \mid i, j \in H}\$: set of arcs representing the distance between two candidate sites.
+    - $V =  \{(i, j) \mid i, j \in H \ \text{and} \ \text{distance}(i, j) < D\}\$: set of arcs with distance less than or equal to the maximum allowed distance between two charging stations.
 
 - Parameters:
     - $d_{i,j}, i,j=1,\ldots,n$: distances between consecutive nodes,
     - $c_i$: cost of installing a charging station in site $i, i=1\ldots n$
     - $B$: given budget.
+    - $D$: maximum allowed distance between two charging stations.
 
 - Useful information:
     - $s = 0$: starting point
     - $t = n+1$: ending point
 
 - Variables:
-    - $x_i$: Binary variable, equal to 1 if a charging station is installed at node $\(i\)$, and 0 otherwise, $\(i \in H\)$.
-    - $y_{ij}$: Binary variable, equal to 1 if there is a charging station between sites $i$ and $j$, and 0 otherwise, $\(i, j \in H\)$.
+    - $y_{ij}$: Binary variable, equal to 1 if there is a charging station in sites $i$ and $j$, and 0 otherwise, $\(i, j \in V\)$.
  
 - Constraints:
-    - Budget Constraint: $\sum_{i \in H} c_i \cdot x_i \leq B$
+    - Budget Constraint: $\sum_{i \in V} c_i \cdot y_ij \leq B + c_{starting-point}$
     - Distance Constraint: $d_{ij} \cdot y_{ij} \leq 50 km$ for $\( i, j \in H, i \neq j\)$
     - Linking Constraint: $y_{ij} \leq x_i + x_j - 1$, for all $\( i, j \in H \), i \ne j$
     - Flow Conservation Constraints: <br>

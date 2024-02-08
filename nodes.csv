@@ -1,4 +1,4 @@
-tourist_dest_id,Comune,Piazza,x (longitude),y (latitude),Cost_of_installation [euro]
+tourist_dest_id,Comune,Piazza,x (longitude),y (latitude),Cost_of_installation [€]
 0,Piacenza,Piazza dei Cavalli,9.69307653,45.05268459,1784
 17,Cremona,Piazza Duomo,10.02481327,45.13344776,1922
 18,Gerre de' Caprioli,Piazza del Comune,10.04038403,45.10545147,1559

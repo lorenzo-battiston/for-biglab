@@ -22,7 +22,7 @@ Consider that the cyclist has to visit all the tourist destinations in a consecu
     - $H = \{1,\ldots, n\}$:  tourist sites that may host a charging station.
     - $N = \{0,\ldots,n+1\}$:  Nodes in the graph consist of tourist sites, along with the source and sink.
     - $A = \{(i, j) \mid i, j \in H}\$: set of arcs representing the distance between two candidate sites.
-    - $V =  \{(i, j) \mid i, j \in H \ \text{and} \ d_{i, j} < D\}\$: set of arcs with distance less than or equal to the maximum allowed distance between two charging stations.
+    - $V =  \{(i, j) \mid i, j \in H \ \text{and} \ d_{i, j} \le D\}\$: set of arcs with distance less than or equal to the maximum allowed distance between two charging stations.
 
 - Parameters:
     - $d_{i,j}, i,j=1,\ldots,n$: distances between consecutive nodes,
@@ -46,7 +46,7 @@ Consider that the cyclist has to visit all the tourist destinations in a consecu
   , y_{ij} \ge 0, \forall (i,j) \in V$
     
 - Objective functions:
-    - $\text{Minimize: } z$ where $z$ is a continuous variable representing the total distance of the installation. 
+    - $\text{Minimize: } z$ where $z$ is a continuous variable representing the maximum total distance of the installation. 
   
 ### 4. Files Description
 

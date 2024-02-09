@@ -22,7 +22,7 @@ Consider that the cyclist has to visit all the tourist destinations in a consecu
     - $H = \{1,\ldots, n\}$:  tourist sites that may host a charging station.
     - $N = \{0,\ldots,n+1\}$:  Nodes in the graph consist of tourist sites, along with the source and sink.
     - $A = \{(i, j) \mid i, j \in H}\$: set of arcs representing the distance between two candidate sites.
-    - $V =  \{(i, j) \mid i, j \in H \ \text{and} \ \text{distance}(i, j) < D\}\$: set of arcs with distance less than or equal to the maximum allowed distance between two charging stations.
+    - $V =  \{(i, j) \mid i, j \in H \ \text{and} \ d_{i, j} < D\}\$: set of arcs with distance less than or equal to the maximum allowed distance between two charging stations.
 
 - Parameters:
     - $d_{i,j}, i,j=1,\ldots,n$: distances between consecutive nodes,
@@ -36,29 +36,31 @@ Consider that the cyclist has to visit all the tourist destinations in a consecu
 
 - Variables:
     - $y_{ij}$: Binary variable, equal to 1 if there is a charging station in sites $i$ and $j$, and 0 otherwise, $\(i, j \in V\)$.
+    - $z$: is a continuous dummy variable representing the total distance of the installation.
  
 - Constraints:
-    - Budget Constraint: $\sum_{i \in V} c_i \cdot y_ij \leq B + c_{starting-point}$
-    - Distance Constraint: $d_{ij} \cdot y_{ij} \leq 50 km$ for $\( i, j \in H, i \neq j\)$
-    - Linking Constraint: $y_{ij} \leq x_i + x_j - 1$, for all $\( i, j \in H \), i \ne j$
-    - Flow Conservation Constraints: <br>
+    - Budget Constraint: $\sum_{(i, j) \in V} c_i \cdot y_{ij} \leq B - C_{first_site}$ where $\(C_{first_site}\)$ is the cost of installation at the first site.
+    - Distance Constraint: is applied in $V$.
+    - Dummy Variable Constraint: $d_{ij} - M \cdot (1 - y_{ij}) \leq z \quad \forall (i, j) \in V$ where \(M\) is a large constant.
+    - Flow Conservation Constraints: $\sum_{i \in H: (i,j) \in V} y_{ij} -  \sum_{j \in H: (j,i) \in V} y_{ji} = b_i, \forall i\in H\\
+  , y_{ij} \ge 0, \forall (i,j) \in V$
     
 - Objective functions:
-    - Minimize Maximum Distance Between 2 consecutive charging stations: $Minimize \(\max_{i,j} d_{ij} \cdot y_{ij}\)$
+    - $\text{Minimize: } z$ where $z$ is a continuous variable representing the total distance of the installation. 
   
 ### 4. Files Description
 
 - **nodes.csv**:
-    - dest_id
-    - Commune
+    - tourist_dest_id
+    - Comune
     - Piazza
-    - x(longitude)
-    - y(latitude)
-    - installation_cost
+    - x (longitude)
+    - y (latitude)
+    - Cost_of_installation [€]
 - **OD.csv**:
     - origin_id
     - destination_id
-    - distance
+    - distance [m]
 
 ### 5. Requirements
 
